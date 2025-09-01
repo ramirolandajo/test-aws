@@ -57,4 +57,5 @@ jobs:
           environment_name: D2-test-env
           version_label: ${{ github.sha }}
           region: sa-east-1
-          deployment_package: ./artifact/*.jar
+          deployment_package: ./artifact/test-aws-0.0.1-SNAPSHOT.jar
+
