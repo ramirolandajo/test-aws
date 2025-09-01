@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: artifact
-          path: target/aws-deployment-github-0.0.1-SNAPSHOT.jar
+          path: target/*.jar
 
   deploy:
     needs: build
@@ -44,7 +44,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: artifact
-          path: .
+          path: ./artifact
 
       # Deploy the artifact to Elastic Beanstalk
       - name: Deploy to EB
@@ -57,4 +57,4 @@ jobs:
           environment_name: D2-test-env
           version_label: ${{ github.sha }}
           region: sa-east-1
-          deployment_package: aws-deployment-github-0.0.1-SNAPSHOT.jar
+          deployment_package: ./artifact/*.jar
