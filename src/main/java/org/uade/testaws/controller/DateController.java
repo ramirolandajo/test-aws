@@ -8,15 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.uade.testaws.service.DateService;
 
-@RequestMapping("/date")
+@RequestMapping("/")
 @RestController
 public class DateController {
 
     @Autowired
     DateService dateService;
 
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity<String> getTodaysDate() {
         return new ResponseEntity<>(this.dateService.returnDate(), HttpStatus.OK);
+    }
+
+    @GetMapping("product")
+    public ResponseEntity<?> getProduct() {
+        return new ResponseEntity<>(this.dateService.returnProduct(), HttpStatus.OK);
+    }
+
+    @GetMapping("user")
+    public ResponseEntity<?> getUser() {
+        return new ResponseEntity<>(this.dateService.returnUser(), HttpStatus.OK);
     }
 }
